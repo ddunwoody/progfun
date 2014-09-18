@@ -27,6 +27,7 @@ object Lists {
     def accumulate(acc: Int, xs: List[Int]): Int =
       if (xs.isEmpty) acc
       else accumulate(acc + xs.head, xs.tail)
+    if (xs.isEmpty) throw new IllegalArgumentException("empty list is not allowed")
     accumulate(0, xs)
   }
 
@@ -48,6 +49,6 @@ object Lists {
       if (xs.isEmpty || xs.head < v) v
       else maxIter(xs.head, xs.tail)
     if (xs.isEmpty) throw new IllegalArgumentException("empty list is not allowed")
-    else maxIter(Int.MinValue, xs)
+    maxIter(Int.MinValue, xs)
   }
 }
