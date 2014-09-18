@@ -19,7 +19,7 @@ import org.scalatest.junit.JUnitRunner
  * inside eclipse using the built-in JUnit test runner.
  *
  * You have two options for running this test suite:
- * 
+ *
  * - Start the sbt console and run the "test" command
  * - Right-click this file in eclipse and chose "Run As" - "JUnit Test"
  */
@@ -37,7 +37,7 @@ class ListsSuite extends FunSuite {
    * which tests that its argument evaluates to `true`. So one of the simplest
    * successful tests is the following:
    */
-  test("one plus one is two")(assert(1 + 1 == 2))
+  test("one plus one is two")(assert(1 + 1 === 2))
 
 
   /**
@@ -46,35 +46,9 @@ class ListsSuite extends FunSuite {
    *
    * This allows tests to be written in a more readable manner:
    */
-  test("one plus one is three?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+  test("one plus two is three") {
+    assert(1 + 2 === 3) // This assertion fails! Go ahead and fix it.
   }
-
-
-  /**
-   * One problem with the previous (failing) test is that ScalaTest will
-   * only tell you that a test failed, but it will not tell you what was
-   * the reason for the failure. The output looks like this:
-   *
-   * {{{
-   *    [info] - one plus one is three? *** FAILED ***
-   * }}}
-   *
-   * This situation can be improved by using a special equality operator
-   * `===` instead of `==` (this is only possible in ScalaTest). So if you
-   * run the next test, ScalaTest will show the following output:
-   *
-   * {{{
-   *    [info] - details why one plus one is not three *** FAILED ***
-   *    [info]   2 did not equal 3 (ListsSuite.scala:67)
-   * }}}
-   *
-   * We recommend to always use the `===` equality operator when writing tests.
-   */
-  test("details why one plus one is not three") {
-    assert(1 + 1 === 3) // Fix me, please!
-  }
-
 
   /**
    * In order to test the exceptional behavior of a methods, ScalaTest offers
