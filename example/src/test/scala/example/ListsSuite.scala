@@ -30,7 +30,7 @@ class ListsSuite extends FunSuite {
    * Tests are written using the `test` operator which takes two arguments:
    *
    * - A description of the test. This description has to be unique, no two
-   *   tests can have the same description.
+   * tests can have the same description.
    * - The test body, a piece of Scala code that implements the test
    *
    * The most common way to implement a test body is using the method `assert`
@@ -73,9 +73,10 @@ class ListsSuite extends FunSuite {
    * Now we finally write some tests for the list functions that have to be
    * implemented for this assignment. We fist import all members of the
    * `List` object.
-   */ 
+   */
+
   import Lists._
-  
+
 
   /**
    * We only provide two very basic tests for you. Write more tests to make
@@ -88,11 +89,63 @@ class ListsSuite extends FunSuite {
    * however it is recommended to write an individual `test` statement for
    * every tested aspect of a method.
    */
-  test("sum of a few numbers") {
-    assert(sum(List(1,2,0)) === 3)
+
+  test("sum of an empty list is zero") {
+    assert(sum(List()) === 0)
   }
-  
+
+  test("sum of a singleton list is the value") {
+    assert(sum(List(5)) === 5)
+  }
+
+  test("sum of a repeated list") {
+    assert(sum(List(1, 2, 3, 1, 2, 3)) === 12)
+  }
+
+  test("sum of zeros is zero") {
+    assert(sum(List(0, 0, 0)) === 0)
+  }
+
+  test("sum of a few numbers") {
+    assert(sum(List(1, 2, 0)) === 3)
+  }
+
+  test("sum of negative and positive numbers") {
+    assert(sum(List(1, 2, -5)) === -2)
+  }
+
+  test("max throws an exception if its argument is empty") {
+    intercept[IllegalArgumentException] {
+      max(List())
+    }
+  }
+
+  test("max of a single number") {
+    assert(max(List(4)) === 4)
+  }
+
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+
+  test("max of a single zero") {
+    assert(max(List(0)) === 0)
+  }
+
+  test("max of a single negative number") {
+    assert(max(List(-6)) === -6)
+  }
+
+
+  test("max of a set of negative numbers") {
+    assert(max(List(-2, -3, -7)) === -2)
+  }
+
+  test("max of a set of positive and negative numbers") {
+    assert(max(List(-7, 3, -2)) === 3)
+  }
+
+  test("max of a set of identical numbers") {
+    assert(max(List(5, 5, 5)) === 5)
   }
 }

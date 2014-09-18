@@ -23,7 +23,12 @@ object Lists {
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
-  def sum(xs: List[Int]): Int = ???
+  def sum(xs: List[Int]): Int = {
+    def accumulate(acc: Int, xs: List[Int]): Int =
+      if (xs.isEmpty) acc
+      else accumulate(acc + xs.head, xs.tail)
+    accumulate(0, xs)
+  }
 
   /**
    * This method returns the largest element in a list of integers. If the
@@ -38,5 +43,11 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = ???
+  def max(xs: List[Int]): Int = {
+    def maxIter(v: Int, xs: List[Int]): Int =
+      if (xs.isEmpty || xs.head < v) v
+      else maxIter(xs.head, xs.tail)
+    if (xs.isEmpty) throw new IllegalArgumentException("empty list is not allowed")
+    else maxIter(Int.MinValue, xs)
+  }
 }
