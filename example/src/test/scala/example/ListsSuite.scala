@@ -90,10 +90,8 @@ class ListsSuite extends FunSuite {
    * every tested aspect of a method.
    */
 
-  test("sum throws an exception if its argument is empty") {
-    intercept[IllegalArgumentException] {
-      sum(List())
-    }
+  test("sum of an empty list is zero") {
+    assert(sum(List()) === 0)
   }
 
   test("sum of a singleton list is the value") {
@@ -117,7 +115,7 @@ class ListsSuite extends FunSuite {
   }
 
   test("max throws an exception if its argument is empty") {
-    intercept[IllegalArgumentException] {
+    intercept[NoSuchElementException] {
       max(List())
     }
   }
