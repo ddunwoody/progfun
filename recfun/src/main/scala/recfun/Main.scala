@@ -1,5 +1,8 @@
 package recfun
+
 import common._
+
+import scala.annotation.tailrec
 
 object Main {
   def main(args: Array[String]) {
@@ -40,5 +43,13 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+    def inner(count: Int, moneyLeft: Int, availableCoins: List[Int]): Int = {
+      if (moneyLeft < 0) 0
+      else if (availableCoins.isEmpty && moneyLeft == 0) count + 1
+      else if (availableCoins.isEmpty) count
+      else inner(count, moneyLeft - availableCoins.head, availableCoins) + inner(count, moneyLeft, availableCoins.tail)
+    }
+    inner(0, money, coins)
+  }
 }
