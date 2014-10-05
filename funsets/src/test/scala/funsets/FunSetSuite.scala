@@ -192,13 +192,11 @@ class FunSetSuite extends FunSuite {
     new TestSets {
       def f(x: Int): Int = x * x
       val s = union(union(s1, s2), s3)
-      printSet(s)
-      printSet(map(s, f))
-//      assert(contains(map(s, f), 1))
-//      assert(!contains(map(s, f), 2))
-//      assert(!contains(map(s, f), 3))
-//      assert(contains(map(s, f), 4))
-//      assert(contains(map(s, f), 9))
+      assert(contains(map(s, f), 1))
+      assert(!contains(map(s, f), 2))
+      assert(!contains(map(s, f), 3))
+      assert(contains(map(s, f), 4))
+      assert(contains(map(s, f), 9))
     }
   }
 }
